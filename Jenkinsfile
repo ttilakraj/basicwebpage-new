@@ -18,9 +18,9 @@ pipeline {
                     def tomcatWebappsDir = "/var/lib/tomcat9/webapps/ROOT/"
 
                     if (env.BRANCH_NAME == 'main') {
-                        sh "cp index.html ${tomcatWebappsDir}"
+                        sh "sudo cp index.html ${tomcatWebappsDir}"
                     } else if (env.BRANCH_NAME == 'master') {
-                        sh "cp index1.html ${tomcatWebappsDir}"
+                        sh "sudo cp index1.html ${tomcatWebappsDir}"
                     } else {
                         echo "Unsupported branch"
                     }
