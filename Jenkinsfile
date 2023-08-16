@@ -20,13 +20,5 @@ pipeline {
                 }
             }
         }
-        stage('Access Main Branch HTML') {
-            steps {
-                script {
-                    def mainBranchHtml = httpRequest(url: 'http://3.234.86.185:8090/main-branch/index.html', ignoreSslErrors: true)
-                    echo mainBranchHtml.content
-                }
-            }
-        }
     }
 }
