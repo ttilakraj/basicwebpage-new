@@ -17,7 +17,7 @@ pipeline {
            steps {
                 script {
                     def tomcatWebappsDir = "/var/lib/tomcat9/webapps/ROOT/"
-                    sh "cp index.html ${tomcatWebappsDir}"
+                    sh "cp index1.html ${tomcatWebappsDir}"
                 }
             }
         }
