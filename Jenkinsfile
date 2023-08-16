@@ -12,12 +12,19 @@ pipeline {
                 checkout scm
             }
         }
-
         stage('Copy HTML to Tomcat') {
            steps {
                 script {
                     def tomcatWebappsDir = "/var/lib/tomcat9/webapps/ROOT/"
                     sh "cp index.html ${tomcatWebappsDir}"
+                }
+            }
+        }
+        stage('Access Main Branch HTML') {
+            steps {
+                script {
+                    def mainBranchHtml = httpRequest(url: 'http://3.234.86.185:8090/main-branch/index.html', ignoreSslErrors: true)
+                    echo mainBranchHtml.content
                 }
             }
         }
