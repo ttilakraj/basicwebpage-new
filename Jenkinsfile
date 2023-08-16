@@ -13,10 +13,17 @@ pipeline {
             }
         }
         stage('Copy HTML to Tomcat') {
-           steps {
+            steps {
                 script {
                     def tomcatWebappsDir = "/var/lib/tomcat9/webapps/ROOT/"
-                    sh "cp index.html ${tomcatWebappsDir}"
+
+                    if (env.BRANCH_NAME == 'main') {
+                        sh "cp index.html ${tomcatWebappsDir}"
+                    } else if (env.BRANCH_NAME == 'master') {
+                        sh "cp index1.html ${tomcatWebappsDir}"
+                    } else {
+                        echo "Unsupported branch"
+                    }
                 }
             }
         }
