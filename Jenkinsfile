@@ -20,7 +20,7 @@ pipeline {
                     if (env.BRANCH_NAME == 'main') {
                         sh "cp index.html ${tomcatWebappsDir}"
                     } else if (env.BRANCH_NAME == 'master') {
-                        sh "cp index1.html ${tomcatWebappsDir}"
+                        sh "cp index.html ${tomcatWebappsDir}"
                     } else {
                         echo "Unsupported branch"
                     }
